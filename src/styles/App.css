@@ -1,0 +1,21 @@
+body {
+  background-color: grey;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 10px 10px;
+}
+
+h2 {
+  font-family: "Montserrat";
+  font-size: large;
+  font-weight: bolder;
+  color: red;
+}
+
+.pokemon-card {
+  cursor: pointer;
+}
