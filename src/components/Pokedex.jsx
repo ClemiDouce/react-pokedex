@@ -5,7 +5,7 @@ import PokemonCard from "./PokemonCard";
 import Modal from "./Modal";
 const pokemons = require("../datas/pokemon.json");
 
-function Pokedex() {
+function Pokedex({ language }) {
   const [pokemonData, setPokemonData] = useState([]);
   const [isModal, setIsModal] = useState(false);
   const [modalPokemon, setModalPokemon] = useState({
@@ -13,6 +13,7 @@ function Pokedex() {
     sprite: "",
     description: "",
   });
+
   const getPokemonData = () => {
     for (let i = 0; i < 151; i++) {
       let pokemon = pokemons[i];
@@ -44,7 +45,6 @@ function Pokedex() {
     getPokemonData();
   }, []);
   const active = isModal ? "is-active" : "";
-
   return (
     <div>
       <Modal
@@ -59,7 +59,7 @@ function Pokedex() {
             index={index}
             pokemon={pokemon}
             onCardClick={onCardClick}
-            langage="chinese"
+            language={language}
           />
         ))}
       </div>

@@ -6,15 +6,13 @@ function App() {
   const [displayLangage, setDisplayLangage] = useState("french");
 
   const onLangageChange = (event) => {
-    console.log("Salut !");
-    console.log("Say something");
-    console.log(event.target.value);
+    setDisplayLangage(event.target.value);
   };
 
   return (
     <div>
       <Header onSelectChange={onLangageChange} />
-      <Pokedex />
+      <Pokedex language={displayLangage} />
     </div>
   );
 }
