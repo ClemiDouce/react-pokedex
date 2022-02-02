@@ -1,0 +1,10 @@
+.footer {
+  -ms-grid-row: 4;
+      grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.footer img {
+  width: 100px;
+}
+/*# sourceMappingURL=footer.css.map */

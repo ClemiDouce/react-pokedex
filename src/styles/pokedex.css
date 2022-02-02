@@ -1,0 +1,14 @@
+.pokedex-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (130px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 130px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=pokedex.css.map */

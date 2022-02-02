@@ -1,0 +1,14 @@
+.pokemon-card {
+  display: grid;
+  width: 130px;
+  justify-items: center;
+
+  img {
+    aspect-ratio: 4/4;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: "Montserrat";
+  }
+}

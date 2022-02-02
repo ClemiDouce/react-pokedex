@@ -1,11 +1,13 @@
 import React from "react";
+import "../styles/pokemon-card.css";
 
 function PokemonCard({ index, pokemon, onCardClick, language }) {
   return (
-    <div className="box pokemon-card" onClick={(e) => onCardClick(e, index)}>
-      <img src={pokemon.sprite} alt="" />
-      {/* <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2> */}
-      <h2>{language ? pokemon.name[language] : pokemon.name.french}</h2>
+    <div className="pokemon-card card" onClick={(e) => onCardClick(e, index)}>
+      <img className="" src={pokemon.sprite} alt="" />
+      <h2 className="">
+        {language ? pokemon.name[language] : pokemon.name.french}
+      </h2>
     </div>
   );
 }

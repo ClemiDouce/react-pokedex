@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
-import "../styles/App.css";
-import "bulma/css/bulma.min.css";
 import PokemonCard from "./PokemonCard";
-import Modal from "./Modal";
+import "../styles/pokedex.css";
 const pokemons = require("../datas/pokemon.json");
 
-function Pokedex({ language }) {
+function Pokedex({ language, search }) {
   const [pokemonData, setPokemonData] = useState([]);
-  const [isModal, setIsModal] = useState(false);
-  const [modalPokemon, setModalPokemon] = useState({
-    name: "",
-    sprite: "",
-    description: "",
-  });
+  const [filteredPokemonData, setFilterPokemonData] = useState([]);
+
+  useEffect(() => {
+    if (search === "") {
+      return;
+    }
+    let searchedPokemon = pokemonData.filter((item, index, array) => {
+      return item.name[language].toLowerCase().includes(search.toLowerCase());
+    });
+    setFilterPokemonData(searchedPokemon);
+  }, [search]);
 
   const getPokemonData = () => {
     for (let i = 0; i < 151; i++) {
@@ -33,26 +36,18 @@ function Pokedex({ language }) {
   };
 
   const onCardClick = (event, id) => {
-    setModalPokemon(pokemonData[id]);
-    setIsModal(true);
-  };
-
-  const onCloseClick = (event) => {
-    setIsModal(false);
+    console.log(id);
   };
 
   useEffect(() => {
     getPokemonData();
   }, []);
-  const active = isModal ? "is-active" : "";
-  return (
-    <div>
-      <Modal
-        modalPokemon={modalPokemon}
-        active={active}
-        onCloseClick={onCloseClick}
-      />
-      <div className="grid">
+
+  let cards;
+
+  if (search === "") {
+    cards = (
+      <div className="pokedex-grid">
         {pokemonData.map((pokemon, index) => (
           <PokemonCard
             key={index}
@@ -63,8 +58,27 @@ function Pokedex({ language }) {
           />
         ))}
       </div>
-    </div>
-  );
+    );
+  } else if (filteredPokemonData.length > 0) {
+    cards = (
+      <div className="pokedex-grid">
+        {filteredPokemonData.length > 0 &&
+          filteredPokemonData.map((pokemon, index) => (
+            <PokemonCard
+              key={index}
+              index={index}
+              pokemon={pokemon}
+              onCardClick={onCardClick}
+              language={language}
+            />
+          ))}
+      </div>
+    );
+  } else {
+    cards = <h3>Pas de resultat</h3>;
+  }
+
+  return <div className="">{cards}</div>;
 }
 
 export default Pokedex;

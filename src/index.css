@@ -1,0 +1,9 @@
+html {
+  height: 100%;
+}
+
+.app {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 0.1 auto 0.3;
+}
