@@ -11,4 +11,10 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
+.no-result-message {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
 /*# sourceMappingURL=pokedex.css.map */

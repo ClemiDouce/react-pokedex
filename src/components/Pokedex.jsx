@@ -75,7 +75,7 @@ function Pokedex({ language, search }) {
       </div>
     );
   } else {
-    cards = <h3>Pas de resultat</h3>;
+    cards = <p className="no-result-message">Pas de resultat</p>;
   }
 
   return <div className="">{cards}</div>;
